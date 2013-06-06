@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CoolSnow>
+	<proxool>
+		<!--最大连接数(默认5个),超过了这个连接数,再有请求时,就排在队列中等候,最大的等待请求数由simultaneous-build-throttle决定 -->
+		<maximum-connection-count>100</maximum-connection-count>
+		<!--最小连接数(默认2个) -->
+		<minimum-connection-count>10</minimum-connection-count>
+		<!--proxool自动侦察各个连接状态的时间间隔(毫秒),侦察到空闲的连接就马上回收,超时的销毁 默认30秒 -->
+		<house-keeping-sleep-time>90000</house-keeping-sleep-time>
+		<!--没有空闲连接可以分配而在队列中等候的最大请求数,超过这个请求数的用户连接就不会被接受 -->
+		<simultaneous-build-throttle>100</simultaneous-build-throttle>
+		<!--最少保持的空闲连接数(默认2个) -->
+		<prototype-count>5</prototype-count>
+		<!--在使用之前测试 -->
+		<test-before-use>true</test-before-use>
+		<!--用于保持连接的测试语句 -->
+		<house-keeping-test-sql>select now()</house-keeping-test-sql>
+		<!-- 如果为true,那么每个被执行的SQL语句将会在执行期被log记录(DEBUG LEVEL).你也可以注册一个ConnectionListener 
+			(参看ProxoolFacade)得到这些信息. -->
+		<trace>true</trace>
+		<!-- 连接池使用状况统计。 -->
+		<statistics>1h,1d</statistics>
+		<!-- 日志统计跟踪类型。 -->
+		<statistics-log-level>DEBUG</statistics-log-level>
+
+		<!--数据源的别名 -->
+		<alias>CoolSnow</alias>
+		<driver-url>jdbc:mysql://localhost:3306/mybatis</driver-url>
+		<driver-class>com.mysql.jdbc.Driver</driver-class>
+		<driver-properties>
+			<property name="user" value="root" />
+			<property name="password" value="" />
+		</driver-properties>
+	</proxool>
+</CoolSnow>

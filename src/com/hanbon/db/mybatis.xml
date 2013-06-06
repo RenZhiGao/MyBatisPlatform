@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <settings>
+		<!-- 全局启用缓存（默认：true） -->
+		<setting name="cacheEnabled" value="true" />
+		<!-- 将字段自动映射到属性，NONE：不映射；PARTIAL：自动映射简单非嵌套的结果集；FULL：自动映射任何复杂的结果集。（默认：PARTIAL） -->
+		<setting name="autoMappingBehavior" value="FULL" />
+		<!-- 执行器，SIMPLE：简单执行器；REUSE：可重用PreparedStatements执行器；BATCH：可批量更新的Statement执行器。（默认：SIMPLE） -->
+		<setting name="defaultExecutorType" value="SIMPLE" />
+	</settings>
+	<typeAliases>
+		<typeAlias alias="proxool" type="com.hanbon.db.ProxoolDataSourceFactory" />
+		<typeAlias alias="test" type="com.hanbon.bean.TestBean" />
+	</typeAliases>
+	<environments default="MySQL">
+		<environment id="MySQL">
+			<transactionManager type="JDBC" />
+			<dataSource type="proxool">
+				<property name="use-alias" value="CoolSnow" />
+			</dataSource>
+		</environment>
+	</environments>
+	<mappers>
+		<mapper resource="com/hanbon/bean/TestMapper.xml" />
+	</mappers>
+</configuration>
